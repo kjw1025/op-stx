@@ -1,6 +1,5 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-;
 
 * {
   margin: 0;
@@ -52,12 +51,27 @@ body {
   margin: 0 auto;
 }
 
-.wrap {}
+.wrap {
+  padding-top: 80px;
+}
 
 /* 내용별 Section */
 /* 상단 */
-.header {  
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 80px;
+  transition: height 0.5s;
+  z-index: 9999;
 }
+
+.header-open {
+  height: 400px;
+}
+
 .header::before {
   content: '';
   position: absolute;
@@ -70,9 +84,7 @@ body {
   box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 20%);
 }
 
-.header .inner {
-  
-}
+.header .inner {}
 
 .logo {
   position: absolute;
@@ -85,9 +97,64 @@ body {
   font-size: 0;
 }
 
-.gnb {}
+.gnb {
+  position: relative;
+}
 
-.lang {  
+.gnb::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 80px;
+  display: block;
+  width: 100vw;
+  height: calc(100% - 80px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.depth1 {
+  position: relative;
+  display: table;
+  table-layout: fixed;
+  width: calc(180px * 6 - 70px);
+  margin: 0 auto;
+}
+
+.depth1>li {
+  display: table-cell;
+  width: 180px;
+}
+
+.depth1>li:last-child {
+  width: 70px;
+}
+
+.depth1>li>a {
+  position: relative;
+  font-size: 19px;
+  color: #000;
+  font-weight: 500;
+  line-height: 80px;
+}
+
+.depth1-focus {
+  color: #ed1c24 !important;
+}
+
+.depth2 {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.depth2 li a {
+  display: inline-block;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.lang {
   position: absolute;
   left: calc(100% + 100px);
   top: 26px;
@@ -100,13 +167,14 @@ body {
   font-size: 15px;
   color: #888;
   font-weight: 500;
-  text-transform: uppercase;  
+  text-transform: uppercase;
 }
+
 .lang .lang-active {
   color: #000;
 }
 
-.lang-bar{
+.lang-bar {
   display: inline-block;
   width: 1px;
   height: 9px;
@@ -115,14 +183,264 @@ body {
 }
 
 /* 비주얼 */
-.visual {}
+.visual {
+  background: url('../images/img_visual01.png') no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.visual .inner {
+  height: 855px;
+  border-top: 1px solid rgba(0, 0, 0, 0);
+}
+
+.visual-title {
+  position: relative;
+  font-size: 70px;
+  color: #fff;
+  font-weight: 500;
+  margin-top: 235px;
+  line-height: 1.15;
+}
+
+.visual-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -40px;
+  width: 60px;
+  height: 5px;
+  background-color: #ed1c24;
+}
+
+.visual-txt {
+  font-size: 21px;
+  color: #fff;
+  font-weight: 300;
+  margin-top: 40px;
+}
+
+.visual-bt {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  width: 33px;
+  height: 33px;
+  background: url('../images/bg_common.png') no-repeat;
+  background-position: -122px 0px;
+  border: 0;
+  font-size: 0;
+  cursor: pointer;
+}
+
 /* 업무파트 */
 .part {}
+
+.part-title {
+  position: relative;
+  font-size: 44px;
+  color: #111;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 110px;
+  padding-bottom: 25px;
+}
+
+.part-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 37px;
+  height: 4px;
+  background-color: #ed1c24;
+}
+
+.part-txt {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 75px;
+}
+
+.part-list {
+  margin-bottom: 130px;
+}
+
+.part-list li {
+  width: 20%;
+  height: 420px;
+  float: left;
+  background: url('../images/img_business.png') no-repeat;
+}
+
+.part-list li a {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(244, 128, 37, 0);
+  transition: background-color 0.5s;
+}
+
+.part-list li a:hover {
+  background-color: rgba(244, 128, 37, 1.0);
+}
+
+.part-list li a:hover::after {
+  opacity: 1.0;
+}
+
+.part-list li a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  background: url('../images/bg_common.png') no-repeat;
+
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.part-list li:nth-child(1) a::after {
+  width: 113px;
+  height: 112px;
+  background-position: -173px 0px;
+}
+
+.part-list li:nth-child(2) a::after {
+  width: 123px;
+  height: 111px;
+  background-position: -301px 0px;
+}
+
+.part-list li:nth-child(3) a::after {
+  width: 130px;
+  height: 106px;
+  background-position: 0px -122px;
+}
+
+.part-list li:nth-child(4) a::after {
+  width: 130px;
+  height: 111px;
+  background-position: -140px -122px;
+}
+
+.part-list li:nth-child(5) a::after {
+  width: 102px;
+  height: 105px;
+  background-position: -280px -121px;
+}
+
+.part-list li a h3 {
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  padding-top: 80px;
+}
+
 /* 새소식 */
-.news {}
+.news {
+  position: relative;
+}
+
+.news::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #ed1c24;
+}
+
+.news::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #58595b;
+}
+
+.news .inner {
+  z-index: 9;
+}
+
+.news-box {
+  width: 50%;
+  float: left;
+  padding: 55px 0;
+}
+
+.news-box:first-child {
+  padding-right: 110px;
+}
+
+.news-box:last-child {
+  padding-left: 110px;
+}
+
+
+.news-box h3 {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 300;
+  margin-bottom: 45px;
+}
+
+.news-list {}
+
+.news-list li {
+  padding: 25px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.news-list li:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.news-list li a {
+  position: relative;
+  display: block;
+}
+
+.news-list li a::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  transform: translateX(-50%);
+  top: 0;
+  width: 48px;
+  height: 23px;
+  background: url('../images/bg_common.png') no-repeat;
+  background-position: 0px -49px;
+}
+
+.news-list li a span {
+
+  display: inline-block;
+  width: 75%;
+
+  color: #fff;
+  font-weight: 300;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 /* 고객센터 */
 .cs {}
+
 /* 소개 */
 .about {}
+
 /* 하단 */
 .footer {}
